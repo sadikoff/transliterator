@@ -130,7 +130,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussian($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
     }
 
     public static function testRussianProvider()
@@ -152,7 +152,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST1971($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_GOST_1971)->transliterate($actual, $direction), sprintf('Used maps: %s %s %s', var_export(self::$transliteratorRu->getCyrMap(), true), PHP_EOL, var_export(self::$transliteratorRu->getLatMap(), true)));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_GOST_1971)->transliterate($actual, $direction), sprintf('Used maps: %s %s %s', var_export(self::$transliteratorRu->getCyrMap(), true), PHP_EOL, var_export(self::$transliteratorRu->getLatMap(), true)));
     }
 
     public static function testRussianGOST1971Provider()
@@ -182,7 +182,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianISOR91968($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_ISO_R_9_1968)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ISO_R_9_1968)->transliterate($actual, $direction));
     }
 
     public static function testRussianISOR91968Provider()
@@ -200,7 +200,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST1983($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_GOST_1983)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_GOST_1983)->transliterate($actual, $direction));
     }
 
     public static function testRussianGOST1983Provider()
@@ -218,7 +218,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST2000B($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_GOST_2000_B)->transliterate($actual, $direction), sprintf('Used maps: %s %s %s', var_export(self::$transliteratorRu->getCyrMap(), true), PHP_EOL, var_export(self::$transliteratorRu->getLatMap(), true)));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_GOST_2000_B)->transliterate($actual, $direction), sprintf('Used maps: %s %s %s', var_export(self::$transliteratorRu->getCyrMap(), true), PHP_EOL, var_export(self::$transliteratorRu->getLatMap(), true)));
     }
 
     public static function testRussianGOST2000BProvider()
@@ -246,7 +246,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST2002($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_GOST_2002)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_GOST_2002)->transliterate($actual, $direction));
     }
 
     public static function testRussianGOST2002Provider()
@@ -264,7 +264,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianALALC($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_ALA_LC)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ALA_LC)->transliterate($actual, $direction));
     }
 
     public static function testRussianALALCProvider()
@@ -282,7 +282,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianBritishStandard($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_British_Standard)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_British_Standard)->transliterate($actual, $direction));
     }
 
     public static function testRussianBritishStandardProvider()
@@ -300,7 +300,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianBGNPCGN($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
     }
 
     public static function testRussianBGNPCGNProvider()
@@ -318,7 +318,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianPassport2003($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorRu->setSystem(Settings::SYSTEM_Passport_2003)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorRu->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_Passport_2003)->transliterate($actual, $direction));
     }
 
     public static function testRussianPassport2003Provider()
@@ -336,7 +336,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testBelarusian($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorBe->setSystem(Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorBe->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
     }
 
     public static function testBelarusianProvider()
@@ -352,7 +352,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testBelarusianALALC($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorBe->setSystem(Settings::SYSTEM_ALA_LC)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorBe->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ALA_LC)->transliterate($actual, $direction));
     }
 
     public static function testBelarusianALALCProvider()
@@ -368,7 +368,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testBelarusianBGNPCGN($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorBe->setSystem(Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorBe->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
     }
 
     public static function testBelarusianBGNPCGNProvider()
@@ -384,7 +384,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testBelarusianISO9($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorBe->setSystem(Settings::SYSTEM_ISO_9)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorBe->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ISO_9)->transliterate($actual, $direction));
     }
 
     public static function testBelarusianISO9Provider()
@@ -400,7 +400,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testBelarusianNational2000($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorBe->setSystem(Settings::SYSTEM_National_2000)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorBe->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_National_2000)->transliterate($actual, $direction));
     }
 
     public static function testBelarusianNational2000Provider()
@@ -416,7 +416,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testMacedonian($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorMk->setSystem(Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorMk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
     }
 
     public static function testMacedonianProvider()
@@ -432,7 +432,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testMacedonianISO91995($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorMk->setSystem(Settings::SYSTEM_ISO_9_1995)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorMk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ISO_9_1995)->transliterate($actual, $direction));
     }
 
     public static function testMacedonianISO91995Provider()
@@ -448,7 +448,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testMacedonianBGNPCGN($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorMk->setSystem(Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorMk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
     }
 
     public static function testMacedonianBGNPCGNProvider()
@@ -464,7 +464,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testMacedonianISO9R1968NationalAcademy($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorMk->setSystem(Settings::SYSTEM_ISO_9_R_1968_National_Academy)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorMk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ISO_9_R_1968_National_Academy)->transliterate($actual, $direction));
     }
 
     public static function testMacedonianISO9R1968NationalAcademyProvider()
@@ -480,7 +480,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testMacedonianISO9R1968b($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorMk->setSystem(Settings::SYSTEM_ISO_9_R_1968_b)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorMk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ISO_9_R_1968_b)->transliterate($actual, $direction));
     }
 
     public static function testMacedonianISO9R1968bProvider()
@@ -496,7 +496,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainian($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianProvider()
@@ -512,7 +512,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianALALC($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_ALA_LC)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ALA_LC)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianALALCProvider()
@@ -528,7 +528,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testtestUkrainianBritish($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_British)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_British)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianBritishProvider()
@@ -544,7 +544,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianBGNPCGN($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_BGN_PCGN)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianBGNPCGNProvider()
@@ -560,7 +560,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianISO9($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_ISO_9)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_ISO_9)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianISO9Provider()
@@ -576,7 +576,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianNational($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_National)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_National)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianNationalProvider()
@@ -592,7 +592,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianGOST1971($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_GOST_1971)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_GOST_1971)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianGOST1971Provider()
@@ -608,7 +608,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianGOST1986($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_GOST_1986)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_GOST_1986)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianGOST1986Provider()
@@ -624,7 +624,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianDerzhstandart1995($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_Derzhstandart_1995)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_Derzhstandart_1995)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianDerzhstandart1995Provider()
@@ -640,7 +640,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianPassport2004($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_Passport_2004)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_Passport_2004)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianPassport2004Provider()
@@ -656,7 +656,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianPassport2007($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_Passport_2007)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_Passport_2007)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianPassport2007Provider()
@@ -672,7 +672,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testUkrainianPassport2010($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorUk->setSystem(Settings::SYSTEM_Passport_2010)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorUk->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_Passport_2010)->transliterate($actual, $direction));
     }
 
     public static function testUkrainianPassport2010Provider()
@@ -688,7 +688,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testBulgarian($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorBg->setSystem(Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorBg->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
     }
 
     public static function testBulgarianProvider()
@@ -704,7 +704,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testGreek($expected, $actual, $direction)
     {
-        $this->assertEquals($expected, self::$transliteratorEl->setSystem(Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
+        $this->assertEquals($expected, self::$transliteratorEl->setSystem(\Artemiso\Transliterator\Settings::SYSTEM_DEFAULT)->transliterate($actual, $direction));
     }
 
     public static function testGreekProvider()

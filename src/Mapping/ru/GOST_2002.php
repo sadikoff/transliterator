@@ -1,6 +1,6 @@
 <?php
 
-namespace Artemiso\Transliterator\Mapping\sru;
+namespace Artemiso\Transliterator\Mapping\ru;
 
 use Artemiso\Transliterator\TransliterateCharMap;
 
