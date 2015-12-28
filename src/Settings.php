@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Transliterator;
+namespace Artemiso\Transliterator;
 
 /**
  * Keeps language,transliteration system and base path settings.
@@ -205,7 +205,7 @@ class Settings
     {
         $this->setLang($lang)
           ->setSystem($system)
-          ->setMapBasePath(__DIR__ . DIRECTORY_SEPARATOR . 'data');
+          ->setMapBasePath(__DIR__.DIRECTORY_SEPARATOR);
     }
 
     /**

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Transliterator;
+namespace Artemiso\Transliterator;
 
 /**
  * Loads transliteration maps from files.
@@ -110,7 +110,7 @@ class DataLoader
      * Store map to cache.
      *
      * @param string $id cache ID
-     * @param array char map
+     * @param array $map char map
      */
     protected function storeToCache($id, $map)
     {

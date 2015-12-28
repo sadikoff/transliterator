@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Transliterator;
+namespace Artemiso\Transliterator;
 
 /**
  * Transliterator is used to convert text from
