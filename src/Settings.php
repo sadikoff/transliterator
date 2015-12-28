@@ -56,7 +56,7 @@ class Settings
     /**
      * Usually scholarly or some default transliteration system.
      */
-    const SYSTEM_DEFAULT = 'default';
+    const SYSTEM_DEFAULT = 'Standart';
 
     /**
      * ISO 9 transliteration system.
@@ -121,7 +121,7 @@ class Settings
     /**
      * Passport 2003 transliteration system.
      */
-    const SYSTEM_Passport_2003 = 'Passport_2003';
+    const SYSTEM_Passport_1997 = 'Passport_1997';
 
     /**
      * Passport 2004 transliteration system.
@@ -187,55 +187,17 @@ class Settings
      */
     protected $system;
 
-    /**
-     * Path to map files.
-     *
-     * @var string
-     */
-    protected $mapBasePath;
 
     /**
      * Settings constructor.
      *
-     * @param string $lang   ISO 639-1 language code
+     * @param string $lang ISO 639-1 language code
      * @param string $system transliteration system
      * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
      */
     public function __construct($lang, $system = self::SYSTEM_DEFAULT)
     {
-        $this->setLang($lang)
-          ->setSystem($system)
-          ->setMapBasePath(__DIR__.DIRECTORY_SEPARATOR);
-    }
-
-    /**
-     * Get path to map file depending on current settings.
-     *
-     * @return string path to map file
-     */
-    public function getMapFilePath()
-    {
-        return sprintf(
-            '%s.php',
-            $this->mapBasePath .
-            DIRECTORY_SEPARATOR .
-            $this->getLang().
-            DIRECTORY_SEPARATOR .
-            $this->getSystem()
-        );
-    }
-
-    /**
-     * Set base path to map files.
-     *
-     * @param  string         $mapBasePath path to map files
-     * @return Transliterator fluent interface
-     */
-    public function setMapBasePath($mapBasePath)
-    {
-        $this->mapBasePath = rtrim($mapBasePath, DIRECTORY_SEPARATOR);
-
-        return $this;
+        $this->setLang($lang)->setSystem($system);
     }
 
     /**
@@ -251,7 +213,7 @@ class Settings
     /**
      * Set language.
      *
-     * @param  string   $lang ISO 639-1 language code
+     * @param  string $lang ISO 639-1 language code
      * @return Settings fluent interface
      * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
      */
@@ -283,14 +245,15 @@ class Settings
     /**
      * Set transliteration system.
      *
-     * @param  string   $system transliteration system
+     * @param  string $system transliteration system
      * @return Settings fluent interface
      */
     public function setSystem($system)
     {
         if (!in_array($system, $this->getSupportedTranliterationSystems())) {
             throw new \InvalidArgumentException(
-                sprintf('Transliteration system "%s" is not supported for "%s" language.',
+                sprintf(
+                    'Transliteration system "%s" is not supported for "%s" language.',
                     $system,
                     $this->getLang()
                 )
@@ -300,6 +263,12 @@ class Settings
         $this->system = $system;
 
         return $this;
+    }
+
+
+    public function getMappingClass()
+    {
+        return $this->getLang().'\\'.$this->getSystem();
     }
 
     /**
@@ -316,7 +285,7 @@ class Settings
             self::LANG_MK,
             self::LANG_UK,
             self::LANG_BG,
-            self::LANG_EL
+            self::LANG_EL,
         );
     }
 
@@ -331,55 +300,68 @@ class Settings
 
         switch ($this->getLang()) {
             case self::LANG_RU:
-                return array_merge($default, array(
-                    self::SYSTEM_ISO_R_9_1968,
-                    self::SYSTEM_GOST_1971,
-                    self::SYSTEM_GOST_1983,
-                    self::SYSTEM_GOST_2000_B,
-                    self::SYSTEM_GOST_2002,
-                    self::SYSTEM_ALA_LC,
-                    self::SYSTEM_British_Standard,
-                    self::SYSTEM_BGN_PCGN,
-                    self::SYSTEM_Passport_2003
-                ));
-            break;
+                return array_merge(
+                    $default,
+                    array(
+                        self::SYSTEM_ISO_R_9_1968,
+                        self::SYSTEM_GOST_1971,
+                        self::SYSTEM_GOST_1983,
+                        self::SYSTEM_GOST_2000_B,
+                        self::SYSTEM_GOST_2002,
+                        self::SYSTEM_ALA_LC,
+                        self::SYSTEM_British_Standard,
+                        self::SYSTEM_BGN_PCGN,
+                        self::SYSTEM_Passport_1997,
+                        self::SYSTEM_Passport_2010,
+                    )
+                );
+                break;
             case self::LANG_BE:
-                return array_merge($default, array(
-                    self::SYSTEM_ALA_LC,
-                    self::SYSTEM_BGN_PCGN,
-                    self::SYSTEM_ISO_9,
-                    self::SYSTEM_National_2000
-                ));
-            break;
+                return array_merge(
+                    $default,
+                    array(
+                        self::SYSTEM_ALA_LC,
+                        self::SYSTEM_BGN_PCGN,
+                        self::SYSTEM_ISO_9,
+                        self::SYSTEM_National_2000,
+                    )
+                );
+                break;
             case self::LANG_MK:
-                return array_merge($default, array(
-                    self::SYSTEM_ISO_9_1995,
-                    self::SYSTEM_BGN_PCGN,
-                    self::SYSTEM_ISO_9_R_1968_National_Academy,
-                    self::SYSTEM_ISO_9_R_1968_b
-                ));
-            break;
+                return array_merge(
+                    $default,
+                    array(
+                        self::SYSTEM_ISO_9_1995,
+                        self::SYSTEM_BGN_PCGN,
+                        self::SYSTEM_ISO_9_R_1968_National_Academy,
+                        self::SYSTEM_ISO_9_R_1968_b,
+                    )
+                );
+                break;
             case self::LANG_UK:
-                return array_merge($default, array(
-                    self::SYSTEM_ALA_LC,
-                    self::SYSTEM_British,
-                    self::SYSTEM_BGN_PCGN,
-                    self::SYSTEM_ISO_9,
-                    self::SYSTEM_National,
-                    self::SYSTEM_GOST_1971,
-                    self::SYSTEM_GOST_1986,
-                    self::SYSTEM_Derzhstandart_1995,
-                    self::SYSTEM_Passport_2004,
-                    self::SYSTEM_Passport_2007,
-                    self::SYSTEM_Passport_2010
-                ));
-            break;
+                return array_merge(
+                    $default,
+                    array(
+                        self::SYSTEM_ALA_LC,
+                        self::SYSTEM_British,
+                        self::SYSTEM_BGN_PCGN,
+                        self::SYSTEM_ISO_9,
+                        self::SYSTEM_National,
+                        self::SYSTEM_GOST_1971,
+                        self::SYSTEM_GOST_1986,
+                        self::SYSTEM_Derzhstandart_1995,
+                        self::SYSTEM_Passport_2004,
+                        self::SYSTEM_Passport_2007,
+                        self::SYSTEM_Passport_2010,
+                    )
+                );
+                break;
             case self::LANG_BG:
                 return $default;
-            break;
+                break;
             case self::LANG_EL:
                 return $default;
-            break;
+                break;
         }
 
         return $default;

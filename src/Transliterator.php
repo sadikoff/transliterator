@@ -29,13 +29,6 @@ class Transliterator
     protected $settings;
 
     /**
-     * Mapping loader.
-     *
-     * @var DataLoader
-     */
-    protected $dataLoader;
-
-    /**
      * Cyrillic mapping.
      *
      * @var array
@@ -59,7 +52,6 @@ class Transliterator
     public function __construct($lang, $system = Settings::SYSTEM_DEFAULT)
     {
         $this->settings = new Settings($lang, $system);
-        $this->dataLoader = new DataLoader();
     }
 
     /**
@@ -178,10 +170,7 @@ class Transliterator
      */
     protected function getTransliterationMap($alphabet)
     {
-        return $this->dataLoader->getTransliterationMap(
-            $this->settings->getMapFilePath(),
-            $alphabet
-        );
+        return DataLoader::getTransliterationMap($this->settings->getMappingClass(), $alphabet);
     }
 
     /**
@@ -206,19 +195,6 @@ class Transliterator
     public function setLatMap(array $latMap)
     {
         $this->latMap = $latMap;
-
-        return $this;
-    }
-
-    /**
-     * Set base path to map files.
-     *
-     * @param  string         $mapBasePath path to map files
-     * @return Transliterator fluent interface
-     */
-    public function setMapBasePath($mapBasePath)
-    {
-        $this->settings->setMapBasePath($mapBasePath);
 
         return $this;
     }
