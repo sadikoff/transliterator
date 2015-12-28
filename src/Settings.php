@@ -1,20 +1,14 @@
 <?php
 
-/*
- * This file is part of the Transliterator package.
- *
- * (c) Саша Стаменковић <umpirsky@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Artemiso\Transliterator;
 
 /**
  * Keeps language,transliteration system and base path settings.
  *
+ * @package Artemiso\Transliterator
+ *
  * @author Саша Стаменковић <umpirsky@gmail.com>
+ * @author Владимир Садиков <sadikoff@gmail.com>
  */
 class Settings
 {

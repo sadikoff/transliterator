@@ -4,6 +4,13 @@ namespace Artemiso\Transliterator\Mapping\ru;
 
 use Artemiso\Transliterator\TransliterateCharMap;
 
+/**
+ * Class Passport_2010
+ *
+ * @package Artemiso\Transliterator
+ *
+ * @author Садиков Владимир <sadikoff@gmail.com>
+ */
 class Passport_2010 implements TransliterateCharMap
 {
     public static function getCharMap()

@@ -1,5 +1,5 @@
 <?php
-
+//ToDo: Refactor code to new structure
 /*
  * This file is part of the Transliterator package.
  *

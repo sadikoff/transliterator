@@ -1,21 +1,15 @@
 <?php
 
-/*
- * This file is part of the Transliterator package.
- *
- * (c) Саша Стаменковић <umpirsky@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Artemiso\Transliterator;
 
 /**
  * Transliterator is used to convert text from
  * cyrillic to latin and vice versa.
  *
+ * @package Artemiso\Transliterator
+ *
  * @author Саша Стаменковић <umpirsky@gmail.com>
+ * @author Владимир Садиков <sadikoff@gmail.com>
  *
  * @see http://en.wikipedia.org/wiki/Transliteration
  */
@@ -29,18 +23,9 @@ class Transliterator
     protected $settings;
 
     /**
-     * Cyrillic mapping.
-     *
-     * @var array
+     * @var array $mapping mapping cyr lat data
      */
-    protected $cyrMap;
-
-    /**
-     * Latin mapping.
-     *
-     * @var array
-     */
-    protected $latMap;
+    protected $mapping;
 
     /**
      * Transliterator constructor.
@@ -90,7 +75,7 @@ class Transliterator
      */
     public function clearCharMaps()
     {
-        $this->cyrMap = $this->latMap = null;
+        $this->mapping = null;
 
         return $this;
     }
@@ -127,6 +112,8 @@ class Transliterator
      */
     public function transliterate($text, $direction)
     {
+        $this->mapping = DataLoader::getTransliterationMap($this->settings->getMappingClass());
+
         if ($direction) {
             return str_replace($this->getCyrMap(), $this->getLatMap(), $text);
         } else {
@@ -141,11 +128,7 @@ class Transliterator
      */
     public function getCyrMap()
     {
-        if (null === $this->cyrMap) {
-            $this->cyrMap = $this->getTransliterationMap(Settings::ALPHABET_CYR);
-        }
-
-        return $this->cyrMap;
+        return $this->mapping[Settings::ALPHABET_CYR];
     }
 
     /**
@@ -155,47 +138,6 @@ class Transliterator
      */
     public function getLatMap()
     {
-        if (null === $this->latMap) {
-            $this->latMap = $this->getTransliterationMap(Settings::ALPHABET_LAT);
-        }
-
-        return $this->latMap;
-    }
-
-    /**
-     * Get trasnsliteration char map.
-     *
-     * @param  string $alphabet
-     * @return array  trasnsliteration map
-     */
-    protected function getTransliterationMap($alphabet)
-    {
-        return DataLoader::getTransliterationMap($this->settings->getMappingClass(), $alphabet);
-    }
-
-    /**
-     * Set cyrillic char map.
-     *
-     * @param  array          $cyrMap cyrillic char map
-     * @return Transliterator fluent interface
-     */
-    public function setCyrMap(array $cyrMap)
-    {
-        $this->cyrMap = $cyrMap;
-
-        return $this;
-    }
-
-    /**
-     * Set latin char map.
-     *
-     * @param  array          $latMap latin char map
-     * @return Transliterator fluent interface
-     */
-    public function setLatMap(array $latMap)
-    {
-        $this->latMap = $latMap;
-
-        return $this;
+        return $this->mapping[Settings::ALPHABET_LAT];
     }
 }
