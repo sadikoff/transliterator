@@ -327,7 +327,7 @@ class Settings
                     array(
                         self::SYSTEM_ISO_9_1995,
                         self::SYSTEM_BGN_PCGN,
-                        self::SYSTEM_ISO_9_R_1968_National_Academy,
+                        self::SYSTEM_ISO_9_R_1968_NA,
                         self::SYSTEM_ISO_9_R_1968_b,
                     )
                 );
