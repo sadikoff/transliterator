@@ -81,6 +81,23 @@ class Transliterator
     }
 
     /**
+     * Sets Custom or Selected mapping
+     *
+     * @param array $mapping
+     * @return $this
+     */
+    public function setMapping($mapping = null)
+    {
+        if (null === $mapping) {
+            $this->mapping = DataLoader::getTransliterationMap($this->settings->getMappingClass());
+        } else {
+            $this->mapping = $mapping;
+        }
+
+        return $this;
+    }
+
+    /**
      * Transliterates cyrillic text to latin.
      *
      * @param  string $text cyrillic text
@@ -112,7 +129,9 @@ class Transliterator
      */
     public function transliterate($text, $direction)
     {
-        $this->mapping = DataLoader::getTransliterationMap($this->settings->getMappingClass());
+        if (null === $this->mapping) {
+            $this->setMapping();
+        }
 
         if ($direction) {
             return str_replace($this->getCyrMap(), $this->getLatMap(), $text);

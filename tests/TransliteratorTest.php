@@ -1,5 +1,6 @@
 <?php
 
+use \Artemiso\Transliterator\Transliterator;
 /**
  * Created by PhpStorm.
  * User: Vladimir
@@ -66,14 +67,14 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        self::$transliterator = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_SR);
-        self::$transliteratorSr = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_SR);
-        self::$transliteratorRu = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_RU);
-        self::$transliteratorBe = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_BE);
-        self::$transliteratorMk = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_MK);
-        self::$transliteratorUk = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_UK);
-        self::$transliteratorBg = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_BG);
-        self::$transliteratorEl = new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_EL);
+        self::$transliterator = new Transliterator(\Artemiso\Transliterator\Settings::LANG_SR);
+        self::$transliteratorSr = new Transliterator(\Artemiso\Transliterator\Settings::LANG_SR);
+        self::$transliteratorRu = new Transliterator(\Artemiso\Transliterator\Settings::LANG_RU);
+        self::$transliteratorBe = new Transliterator(\Artemiso\Transliterator\Settings::LANG_BE);
+        self::$transliteratorMk = new Transliterator(\Artemiso\Transliterator\Settings::LANG_MK);
+        self::$transliteratorUk = new Transliterator(\Artemiso\Transliterator\Settings::LANG_UK);
+        self::$transliteratorBg = new Transliterator(\Artemiso\Transliterator\Settings::LANG_BG);
+        self::$transliteratorEl = new Transliterator(\Artemiso\Transliterator\Settings::LANG_EL);
     }
 
     /**
@@ -81,7 +82,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testWrongLanguage()
     {
-        new \Artemiso\Transliterator\Transliterator('xx');
+        new Transliterator('xx');
     }
 
     /**
@@ -89,7 +90,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testWrongSystem()
     {
-        new \Artemiso\Transliterator\Transliterator(\Artemiso\Transliterator\Settings::LANG_SR, 'xxx');
+        new Transliterator(\Artemiso\Transliterator\Settings::LANG_SR, 'xxx');
     }
 
     public function testCustomMap()
@@ -97,8 +98,7 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             'џАРрХ',
             self::$transliterator
-                ->setCyrMap(array('џ', 'А', 'Р', 'р', 'Х'))
-                ->setLatMap(array('u', 'A', 'P', 'p', 'X'))
+                ->setMapping(['cyr' => ['џ', 'А', 'Р', 'р', 'Х'],'lat' => ['u', 'A', 'P', 'p', 'X']])
                 ->lat2Cyr('uAPpX')
         );
     }
