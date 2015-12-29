@@ -75,7 +75,7 @@ class Settings
     /**
      * ISO 9 (R:1968) + National Academy transliteration system.
      */
-    const SYSTEM_ISO_9_R_1968_National_Academy = 'ISO_9_R_1968_National_Academy';
+    const SYSTEM_ISO_9_R_1968_NA = 'ISO_9_R_1968_NA';
 
     /**
      * GOST 1971 transliteration system.

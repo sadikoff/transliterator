@@ -5,13 +5,13 @@ namespace Artemiso\Transliterator\Mapping\ru;
 use Artemiso\Transliterator\TransliterateCharMap;
 
 /**
- * Class British_Standart
+ * Class British_Standard
  *
  * @package Artemiso\Transliterator
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class British_Standart implements TransliterateCharMap
+class British_Standard implements TransliterateCharMap
 {
     public static function getCharMap()
     {
