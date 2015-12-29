@@ -12,4 +12,4 @@ install:
   - composer install --prefer-dist
 
 script:
-  - vendor/bin/phpunit -c tests/
+  - vendor/bin/phpunit --process-isolation -c tests/
