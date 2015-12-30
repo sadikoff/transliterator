@@ -2,8 +2,6 @@
 
 namespace Artemiso\Transliterator\Mapping\be;
 
-use Artemiso\Transliterator\TransliterateCharMap;
-
 /**
  * Class National_2000
  *
@@ -11,7 +9,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class National_2000 implements TransliterateCharMap
+class National_2000 extends Standart
 {
     public static function getCharMap()
     {

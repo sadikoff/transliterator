@@ -2,8 +2,6 @@
 
 namespace Artemiso\Transliterator\Mapping\ru;
 
-use Artemiso\Transliterator\TransliterateCharMap;
-
 /**
  * Class BGN_PCGN
  *
@@ -11,7 +9,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class BGN_PCGN implements TransliterateCharMap
+class BGN_PCGN extends Standart
 {
     public static function getCharMap()
     {

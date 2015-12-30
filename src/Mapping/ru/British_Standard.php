@@ -2,8 +2,6 @@
 
 namespace Artemiso\Transliterator\Mapping\ru;
 
-use Artemiso\Transliterator\TransliterateCharMap;
-
 /**
  * Class British_Standard
  *
@@ -11,7 +9,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class British_Standard implements TransliterateCharMap
+class British_Standard extends Standart
 {
     public static function getCharMap()
     {

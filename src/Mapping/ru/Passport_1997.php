@@ -2,8 +2,6 @@
 
 namespace Artemiso\Transliterator\Mapping\ru;
 
-use Artemiso\Transliterator\TransliterateCharMap;
-
 /**
  * Class Passport_1997
  *
@@ -11,7 +9,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class Passport_1997 implements TransliterateCharMap
+class Passport_1997 extends Standart
 {
     public static function getCharMap()
     {

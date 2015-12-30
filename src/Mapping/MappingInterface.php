@@ -1,14 +1,14 @@
 <?php
 
-namespace Artemiso\Transliterator;
+namespace Artemiso\Transliterator\Mapping;
 
 /**
- * Interface TransliterateCharMap
+ * Interface CharMapInterface
  *
  * @package Artemiso\Transliterator
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-interface TransliterateCharMap
+interface MappingInterface
 {
     /**
      * Returns char mapping info according to transliterisation standart

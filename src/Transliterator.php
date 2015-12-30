@@ -2,6 +2,8 @@
 
 namespace Artemiso\Transliterator;
 
+use Artemiso\Transliterator\Mapping\Mapping;
+use Artemiso\Transliterator\Settings;
 /**
  * Transliterator is used to convert text from
  * cyrillic to latin and vice versa.
@@ -16,11 +18,14 @@ namespace Artemiso\Transliterator;
 class Transliterator
 {
     /**
-     * Transliterator settings.
-     *
-     * @var Settings
+     * @var string
      */
-    protected $settings;
+    protected $lang;
+
+    /**
+     * @var string
+     */
+    protected $system;
 
     /**
      * @var array $mapping mapping cyr lat data
@@ -34,9 +39,10 @@ class Transliterator
      * @param string $system transliteration system
      * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
      */
-    public function __construct($lang, $system = Settings::SYSTEM_DEFAULT)
+    public function __construct($lang, $system = Settings\System::SCHOLARLY)
     {
-        $this->settings = new Settings($lang, $system);
+        $this->lang = new Settings\Language($lang);
+        $this->system = new Settings\System($system);
     }
 
     /**
@@ -48,8 +54,10 @@ class Transliterator
      */
     public function setLang($lang)
     {
-        $this->settings->setLang($lang);
-        $this->clearCharMaps();
+        if ($lang != $this->lang) {
+            $this->lang = new Settings\Language($lang);
+            $this->clearCharMaps();
+        }
 
         return $this;
     }
@@ -62,8 +70,10 @@ class Transliterator
      */
     public function setSystem($system)
     {
-        $this->settings->setSystem($system);
-        $this->clearCharMaps();
+        if ($system != $this->system) {
+            $this->system = new Settings\System($system);
+            $this->clearCharMaps();
+        }
 
         return $this;
     }
@@ -73,7 +83,7 @@ class Transliterator
      *
      * @return Transliterator fluent interface
      */
-    public function clearCharMaps()
+    private function clearCharMaps()
     {
         $this->mapping = null;
 
@@ -89,7 +99,7 @@ class Transliterator
     public function setMapping($mapping = null)
     {
         if (null === $mapping) {
-            $this->mapping = DataLoader::getTransliterationMap($this->settings->getMappingClass());
+            $this->mapping = DataLoader::getTransliterationMap(Mapping::getClassName($this->lang, $this->system));
         } else {
             $this->mapping = $mapping;
         }
@@ -127,7 +137,7 @@ class Transliterator
      * @param  bool   $direction if true transliterates cyrillic text to latin, if false latin to cyrillic
      * @return string transliterated text
      */
-    public function transliterate($text, $direction)
+    private function transliterate($text, $direction)
     {
         if (null === $this->mapping) {
             $this->setMapping();
@@ -145,9 +155,9 @@ class Transliterator
      *
      * @return array cyrillic char map
      */
-    public function getCyrMap()
+    private function getCyrMap()
     {
-        return $this->mapping[Settings::ALPHABET_CYR];
+        return $this->mapping[Settings\Alphabet::CYR];
     }
 
     /**
@@ -155,8 +165,8 @@ class Transliterator
      *
      * @return array latin char map
      */
-    public function getLatMap()
+    private function getLatMap()
     {
-        return $this->mapping[Settings::ALPHABET_LAT];
+        return $this->mapping[Settings\Alphabet::LAT];
     }
 }

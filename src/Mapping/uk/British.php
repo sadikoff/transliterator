@@ -2,8 +2,6 @@
 
 namespace Artemiso\Transliterator\Mapping\uk;
 
-use Artemiso\Transliterator\TransliterateCharMap;
-
 /**
  * Class British
  *
@@ -11,7 +9,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class British implements TransliterateCharMap
+class British extends Standart
 {
     public static function getCharMap()
     {

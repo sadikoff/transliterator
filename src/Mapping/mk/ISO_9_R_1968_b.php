@@ -2,8 +2,6 @@
 
 namespace Artemiso\Transliterator\Mapping\mk;
 
-use Artemiso\Transliterator\TransliterateCharMap;
-
 /**
  * Class ISO_9_R_1968_b
  *
@@ -11,7 +9,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class ISO_9_R_1968_b implements TransliterateCharMap
+class ISO_9_R_1968_b extends Standart
 {
     public static function getCharMap()
     {

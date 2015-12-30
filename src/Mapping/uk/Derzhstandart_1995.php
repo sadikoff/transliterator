@@ -2,8 +2,6 @@
 
 namespace Artemiso\Transliterator\Mapping\uk;
 
-use Artemiso\Transliterator\TransliterateCharMap;
-
 /**
  * Class Derzhstandart_1995
  *
@@ -11,7 +9,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class Derzhstandart_1995 implements TransliterateCharMap
+class Derzhstandart_1995 extends Standart
 {
     public static function getCharMap()
     {

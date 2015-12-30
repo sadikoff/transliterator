@@ -2,7 +2,7 @@
 
 namespace Artemiso\Transliterator\Mapping\el;
 
-use Artemiso\Transliterator\TransliterateCharMap;
+use Artemiso\Transliterator\Mapping\Mapping;
 
 /**
  * Class Standart
@@ -11,7 +11,7 @@ use Artemiso\Transliterator\TransliterateCharMap;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class Standart implements TransliterateCharMap
+class Standart extends Mapping
 {
     public static function getCharMap()
     {
