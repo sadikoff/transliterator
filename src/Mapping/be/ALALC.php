@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\be;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class ALA_LC extends Standart
+class ALALC extends Standart
 {
     public static function getCharMap()
     {

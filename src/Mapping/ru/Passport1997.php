@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\ru;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class Passport_1997 extends Standart
+class Passport1997 extends Standart
 {
     public static function getCharMap()
     {

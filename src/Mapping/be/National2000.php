@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\be;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class National_2000 extends Standart
+class National2000 extends Standart
 {
     public static function getCharMap()
     {

@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\uk;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class BGN_PCGN extends Standart
+class BGNPCGN extends Standart
 {
     public static function getCharMap()
     {

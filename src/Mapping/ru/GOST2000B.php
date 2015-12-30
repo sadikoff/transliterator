@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\ru;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class GOST_2000_B extends Standart
+class GOST2000B extends Standart
 {
     public static function getCharMap()
     {

@@ -13,82 +13,82 @@ class System extends Settings
     /**
      * ISO 9 transliteration system.
      */
-    const ISO_9 = 'ISO_9';
+    const ISO_9 = 'ISO9';
 
     /**
      * ISO 9 (1995) transliteration system.
      */
-    const ISO_9_1995 = 'ISO_9_1995';
+    const ISO_9_1995 = 'ISO91995';
 
     /**
      * ISO/R 9:1968 transliteration system.
      */
-    const ISO_R_9_1968 = 'ISO_R_9_1968';
+    const ISO_R_9_1968 = 'ISOR91968';
 
     /**
      * ISO 9 (R:1968, b) transliteration system.
      */
-    const ISO_9_R_1968_b = 'ISO_9_R_1968_b';
+    const ISO_9_R_1968_b = 'ISO9R1968b';
 
     /**
      * ISO 9 (R:1968) + National Academy transliteration system.
      */
-    const ISO_9_R_1968_NA = 'ISO_9_R_1968_NA';
+    const ISO_9_R_1968_NA = 'ISO9R1968NA';
 
     /**
      * GOST 1971 transliteration system.
      */
-    const GOST_1971 = 'GOST_1971';
+    const GOST_1971 = 'GOST1971';
 
     /**
      * GOST 1983 transliteration system.
      */
-    const GOST_1983 = 'GOST_1983';
+    const GOST_1983 = 'GOST1983';
 
     /**
      * GOST 1986 transliteration system.
      */
-    const GOST_1986 = 'GOST_1986';
+    const GOST_1986 = 'GOST1986';
 
     /**
      * GOST 2002 transliteration system.
      */
-    const GOST_2002 = 'GOST_2002';
+    const GOST_2002 = 'GOST2002';
 
     /**
      * GOST 2000 transliteration system.
      */
-    const GOST_2000_B = 'GOST_2000_B';
+    const GOST_2000_B = 'GOST2000B';
 
     /**
      * ALA-LC transliteration system.
      */
-    const ALA_LC = 'ALA_LC';
+    const ALA_LC = 'ALALC';
 
     /**
      * BGN/PCGN transliteration system.
      */
-    const BGN_PCGN = 'BGN_PCGN';
+    const BGN_PCGN = 'BGNPCGN';
 
     /**
      * Passport 2003 transliteration system.
      */
-    const Passport_1997 = 'Passport_1997';
+    const Passport_1997 = 'Passport1997';
 
     /**
      * Passport 2004 transliteration system.
      */
-    const Passport_2004 = 'Passport_2004';
+    const Passport_2004 = 'Passport2004';
 
     /**
      * Passport 2007 transliteration system.
      */
-    const Passport_2007 = 'Passport_2007';
+    const Passport_2007 = 'Passport2007';
 
     /**
      * Passport 2010 transliteration system.
      */
-    const Passport_2010 = 'Passport_2010';
+    const Passport_2010 = 'Passport2010';
 
     /**
      * National transliteration system.
@@ -98,7 +98,7 @@ class System extends Settings
     /**
      * National 2000 transliteration system.
      */
-    const National_2000 = 'National_2000';
+    const National_2000 = 'National2000';
 
     /**
      * British transliteration system.
@@ -108,10 +108,10 @@ class System extends Settings
     /**
      * British Standard transliteration system.
      */
-    const British_Standard = 'British_Standard';
+    const British_Standard = 'BritishStandard';
 
     /**
      * British Standard transliteration system.
      */
-    const Derzhstandart_1995 = 'Derzhstandart_1995';
+    const Derzhstandart_1995 = 'Derzhstandart1995';
 }
