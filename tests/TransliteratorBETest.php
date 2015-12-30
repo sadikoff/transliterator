@@ -162,7 +162,7 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
      */
     public function testBelarusianNational2000Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::National_2000)->cyr2Lat($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::NATIONAL_2000)->cyr2Lat($actual));
     }
 
     /**
@@ -172,7 +172,7 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
      */
     public function testBelarusianNational2000Lat2Cyr($expected, $actual)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::National_2000)->lat2Cyr($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::NATIONAL_2000)->lat2Cyr($actual));
     }
 
     /**

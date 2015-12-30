@@ -263,7 +263,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianBritishStandardCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::British_Standard)->cyr2Lat($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::BRITISH_STANDARD)->cyr2Lat($actual));
     }
 
     /**
@@ -273,7 +273,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianBritishStandardLat2Cyr($expected, $actual)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::British_Standard)->lat2Cyr($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::BRITISH_STANDARD)->lat2Cyr($actual));
     }
 
     /**
@@ -327,7 +327,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianPassport1997Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::Passport_1997)->cyr2Lat($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_1997)->cyr2Lat($actual));
     }
 
     /**
@@ -337,7 +337,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianPassport1997Lat2Cyr($expected, $actual)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::Passport_1997)->lat2Cyr($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_1997)->lat2Cyr($actual));
     }
 
     /**
@@ -359,7 +359,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianPassport2010Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::Passport_2010)->cyr2Lat($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_2010)->cyr2Lat($actual));
     }
 
     /**
@@ -369,7 +369,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianPassport2010Lat2Cyr($expected, $actual)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::Passport_2010)->lat2Cyr($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_2010)->lat2Cyr($actual));
     }
 
     /**

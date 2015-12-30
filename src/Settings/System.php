@@ -28,7 +28,7 @@ class System extends Settings
     /**
      * ISO 9 (R:1968, b) transliteration system.
      */
-    const ISO_9_R_1968_b = 'ISO9R1968b';
+    const ISO_9_R_1968_B = 'ISO9R1968b';
 
     /**
      * ISO 9 (R:1968) + National Academy transliteration system.
@@ -73,45 +73,45 @@ class System extends Settings
     /**
      * Passport 2003 transliteration system.
      */
-    const Passport_1997 = 'Passport1997';
+    const PASSPORT_1997 = 'Passport1997';
 
     /**
      * Passport 2004 transliteration system.
      */
-    const Passport_2004 = 'Passport2004';
+    const PASSPORT_2004 = 'Passport2004';
 
     /**
      * Passport 2007 transliteration system.
      */
-    const Passport_2007 = 'Passport2007';
+    const PASSPORT_2007 = 'Passport2007';
 
     /**
      * Passport 2010 transliteration system.
      */
-    const Passport_2010 = 'Passport2010';
+    const PASSPORT_2010 = 'Passport2010';
 
     /**
      * National transliteration system.
      */
-    const National = 'National';
+    const NATIONAL = 'National';
 
     /**
      * National 2000 transliteration system.
      */
-    const National_2000 = 'National2000';
+    const NATIONAL_2000 = 'National2000';
 
     /**
      * British transliteration system.
      */
-    const British = 'British';
+    const BRITISH = 'British';
 
     /**
      * British Standard transliteration system.
      */
-    const British_Standard = 'BritishStandard';
+    const BRITISH_STANDARD = 'BritishStandard';
 
     /**
      * British Standard transliteration system.
      */
-    const Derzhstandart_1995 = 'Derzhstandart1995';
+    const DERZHSTANDART_1995 = 'Derzhstandart1995';
 }

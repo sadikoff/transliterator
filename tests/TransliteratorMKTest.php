@@ -149,7 +149,7 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
      */
     public function testMacedonianISO9R1968bCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ISO_9_R_1968_b)->cyr2Lat($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ISO_9_R_1968_B)->cyr2Lat($actual));
     }
 
     /**
@@ -159,7 +159,7 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
      */
     public function testMacedonianISO9R1968bLat2Cyr($expected, $actual)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ISO_9_R_1968_b)->lat2Cyr($actual));
+        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ISO_9_R_1968_B)->lat2Cyr($actual));
     }
 
     /**
