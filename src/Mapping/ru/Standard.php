@@ -5,13 +5,13 @@ namespace Artemiso\Transliterator\Mapping\ru;
 use Artemiso\Transliterator\Mapping\Mapping;
 
 /**
- * Class Standart
+ * Class Standard
  *
  * @package Artemiso\Transliterator
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class Standart extends Mapping
+class Standard extends Mapping
 {
     protected static $cyr = [
         'е', 'ë', 'ж', 'х', 'ц', 'ч', 'ш', 'щ', 'ю', 'я',

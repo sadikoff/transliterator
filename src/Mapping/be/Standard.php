@@ -11,7 +11,7 @@ use Artemiso\Transliterator\Mapping\Mapping;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class Standart extends Mapping
+class Standard extends Mapping
 {
     public static function getCharMap()
     {

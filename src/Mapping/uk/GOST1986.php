@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\uk;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class GOST1986 extends Standart
+class GOST1986 extends Standard
 {
     public static function getCharMap()
     {

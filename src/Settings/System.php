@@ -8,7 +8,7 @@ class System extends Settings
     /**
      * Usually scholarly or some default transliteration system.
      */
-    const SCHOLARLY = 'Standart';
+    const SCHOLARLY = 'Standard';
 
     /**
      * ISO 9 transliteration system.

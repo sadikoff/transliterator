@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\be;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class ISO9 extends Standart
+class ISO9 extends Standard
 {
     public static function getCharMap()
     {

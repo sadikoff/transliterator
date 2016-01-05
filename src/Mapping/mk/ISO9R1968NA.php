@@ -9,7 +9,7 @@ namespace Artemiso\Transliterator\Mapping\mk;
  *
  * @author Садиков Владимир <sadikoff@gmail.com>
  */
-class ISO9R1968NA extends Standart
+class ISO9R1968NA extends Standard
 {
     public static function getCharMap()
     {
