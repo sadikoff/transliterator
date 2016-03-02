@@ -1,7 +1,7 @@
 <?php
 
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Settings;
+use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Mapping as Lang;
 /**
  * Created by PhpStorm.
  * User: Vladimir
@@ -11,35 +11,16 @@ use \Artemiso\Transliterator\Settings;
 class TransliteratorSRTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Transliterator.
-     *
-     * @var Transliterator
-     */
-    protected static $transliterator;
-
-    public static function setUpBeforeClass()
-    {
-        self::$transliterator = new Transliterator(Settings\Language::SR);
-    }
-
-    /**
-     * @dataProvider testSerbianProvider
-     * @param $expected
-     * @param $actual
-     */
-    public function testSerbianLat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->lat2Cyr($actual));
-    }
-
-    /**
      * @dataProvider testSerbianProvider
      * @param $expected
      * @param $actual
      */
     public function testSerbianCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->cyr2Lat($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\SR::SCHOLARLY)
+        );
     }
 
     /**

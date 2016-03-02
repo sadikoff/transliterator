@@ -1,7 +1,8 @@
 <?php
 
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Settings;
+use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Mapping as Lang;
+
 /**
  * Created by PhpStorm.
  * User: Vladimir
@@ -10,16 +11,9 @@ use \Artemiso\Transliterator\Settings;
  */
 class TransliteratorRUTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * Transliterator.
-     *
-     * @var Transliterator
-     */
-    protected static $transliterator;
-
     public static function setUpBeforeClass()
     {
-        self::$transliterator = new Transliterator(Settings\Language::RU);
+
     }
 
     /**
@@ -29,17 +23,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::SCHOLARLY)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianProvider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianLat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::SCHOLARLY)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::SCHOLARLY)
+        );
     }
 
     /**
@@ -51,7 +38,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
             array('Ю ю', 'Ju ju'),
             array('Я я', 'Ja ja'),
             array('Транслитерация русского алфавита латиницей', 'Transliteracija russkogo alfavita latinicej'),
-            array('Э э', 'È è')
+            array('Э э', 'È è'),
         );
     }
 
@@ -62,17 +49,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST1971Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_1971)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianGOST1971Provider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianGOST1971Lat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_1971)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::GOST_1971)
+        );
     }
 
     /**
@@ -99,17 +79,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianISOR91968Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ISO_R_9_1968)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianISOR91968Provider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianISOR91968Lat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ISO_R_9_1968)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::ISO_R_9_1968)
+        );
     }
 
     /**
@@ -131,17 +104,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST1983Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_1983)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianGOST1983Provider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianGOST1983Lat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_1983)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::GOST_1983)
+        );
     }
 
     /**
@@ -163,17 +129,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST2000BCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_2000_B)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianGOST2000BProvider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianGOST2000BLat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_2000_B)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::GOST_2000_B)
+        );
     }
 
     /**
@@ -188,7 +147,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
             array('Х х', "Kh kh"),
             array('Ю ю', 'Yu yu'),
             array('Я я', 'Ya ya'),
-            array('Й й', 'J j')
+            array('Й й', 'J j'),
         );
     }
 
@@ -199,17 +158,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianGOST2002Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_2002)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianGOST2002Provider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianGOST2002Lat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::GOST_2002)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::GOST_2002)
+        );
     }
 
     /**
@@ -220,7 +172,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
         return array(
             array('Ю ю', 'Û û'),
             array('Я я', 'Â â'),
-            array('Э э', 'È è')
+            array('Э э', 'È è'),
         );
     }
 
@@ -231,17 +183,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianALALCCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ALA_LC)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianALALCProvider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianALALCLat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::ALA_LC)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::ALA_LC)
+        );
     }
 
     /**
@@ -263,17 +208,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianBritishStandardCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::BRITISH_STANDARD)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianBritishStandardProvider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianBritishStandardLat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::BRITISH_STANDARD)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::BRITISH_STANDARD)
+        );
     }
 
     /**
@@ -295,17 +233,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianBGNPCGNCyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::BGN_PCGN)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianBGNPCGNProvider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianBGNPCGNLat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::BGN_PCGN)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::BGN_PCGN)
+        );
     }
 
     /**
@@ -327,17 +258,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianPassport1997Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_1997)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianPassport1997Provider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianPassport1997Lat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_1997)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::PASSPORT_1997)
+        );
     }
 
     /**
@@ -348,7 +272,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
         return array(
             array('Ю ю', 'Yu yu'),
             array('Я я', 'Ya ya'),
-            array('Э э', 'E e')
+            array('Э э', 'E e'),
         );
     }
 
@@ -359,17 +283,10 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
      */
     public function testRussianPassport2010Cyr2Lat($actual, $expected)
     {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_2010)->cyr2Lat($actual));
-    }
-
-    /**
-     * @dataProvider testRussianPassport2010Provider
-     * @param $expected
-     * @param $actual
-     */
-    public function testRussianPassport2010Lat2Cyr($expected, $actual)
-    {
-        $this->assertEquals($expected, self::$transliterator->setSystem(Settings\System::PASSPORT_2010)->lat2Cyr($actual));
+        $this->assertEquals(
+            $expected,
+            Phrase::transliterate($actual, Lang\RU::PASSPORT_2010)
+        );
     }
 
     /**
@@ -380,7 +297,7 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
         return array(
             array('Ю ю', 'Yu yu'),
             array('Я я', 'Ya ya'),
-            array('Э э', 'E e')
+            array('Э э', 'E e'),
         );
     }
 }
