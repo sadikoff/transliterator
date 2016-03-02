@@ -2,8 +2,7 @@
 
 namespace Artemiso\Transliterator\Mapping;
 
-interface /* enum */
-RU
+final class RU
 {
     const ALA_LC = 'ru/ALALC';
     const BGN_PCGN = 'ru/BGNPCGN';

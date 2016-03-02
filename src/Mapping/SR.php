@@ -2,8 +2,7 @@
 
 namespace Artemiso\Transliterator\Mapping;
 
-interface /* enum */
-SR
+final class SR
 {
     const SCHOLARLY = 'sr/Standard';
 }

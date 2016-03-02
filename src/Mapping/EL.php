@@ -2,8 +2,7 @@
 
 namespace Artemiso\Transliterator\Mapping;
 
-interface /* enum */
-EL
+final class EL
 {
     const SCHOLARLY = 'el/Standard';
 }

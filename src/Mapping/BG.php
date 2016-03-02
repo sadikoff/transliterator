@@ -2,8 +2,7 @@
 
 namespace Artemiso\Transliterator\Mapping;
 
-interface /* enum */
-BG
+final class BG
 {
     const SCHOLARLY = 'bg/Standard';
 }

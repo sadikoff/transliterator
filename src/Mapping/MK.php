@@ -2,8 +2,7 @@
 
 namespace Artemiso\Transliterator\Mapping;
 
-interface /* enum */
-MK
+final class MK
 {
     const BGN_PCGN = 'mk/BGNPCGN';
     const ISO_9_R_1968_B = 'mk/ISO9R1968b';

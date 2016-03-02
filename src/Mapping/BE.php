@@ -2,8 +2,7 @@
 
 namespace Artemiso\Transliterator\Mapping;
 
-interface /* enum */
-BE
+final class BE
 {
     const ALA_LC = 'be/ALALC';
     const BGN_PCGN = 'be/BGNPCGN';
