@@ -1,6 +1,6 @@
 <?php
 
-use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Transliterator;
 use \Artemiso\Transliterator\Mapping as Lang;
 
 /**
@@ -11,16 +11,24 @@ use \Artemiso\Transliterator\Mapping as Lang;
  */
 class TransliteratorELTest extends PHPUnit_Framework_TestCase
 {
+    /** @var Transliterator */
+    public static $ts;
+
+    public static function setUpBeforeClass()
+    {
+        self::$ts = new Transliterator();
+    }
+
     /**
      * @dataProvider testGreekProvider
      * @param $expected
      * @param $actual
      */
-    public function testGreekCyr2Lat($actual, $expected)
+    public function testGreek($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\EL::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\EL::SCHOLARLY)
         );
     }
 

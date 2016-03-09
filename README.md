@@ -10,13 +10,7 @@ Basic Usage
 
 ```php
 <?php
-$transliterator = new Transliterator(Settings::LANG_RU);
-$transliterator->cyr2Lat('Русский');                        // 'Russkij'
-$transliterator->lat2Cyr('Russkij');                        // 'Русский'
 
-$transliterator->setLang(Settings::LANG_SR);
-$transliterator->cyr2Lat('Ниш');                            // 'Niš'
-$transliterator->lat2Cyr('Niš');                            // 'Ниш'
 ```
 
 Languages and Transliteration Systems Supported

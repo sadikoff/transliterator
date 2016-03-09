@@ -1,6 +1,6 @@
 <?php
 
-use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Transliterator;
 use \Artemiso\Transliterator\Mapping as Lang;
 
 /**
@@ -11,17 +11,24 @@ use \Artemiso\Transliterator\Mapping as Lang;
  */
 class TransliteratorMKTest extends PHPUnit_Framework_TestCase
 {
+    /** @var Transliterator */
+    public static $ts;
+
+    public static function setUpBeforeClass()
+    {
+        self::$ts = new Transliterator();
+    }
 
     /**
      * @dataProvider testMacedonianProvider
      * @param $expected
      * @param $actual
      */
-    public function testMacedonianCyr2Lat($actual, $expected)
+    public function testMacedonian($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\MK::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\MK::SCHOLARLY)
         );
     }
 
@@ -43,11 +50,11 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testMacedonianISO91995Cyr2Lat($actual, $expected)
+    public function testMacedonianISO91995($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\MK::ISO_9_1995)
+            self::$ts->toTranslit($actual, Lang\MK::ISO_9_1995)
         );
     }
 
@@ -69,11 +76,11 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testMacedonianBGNPCGNCyr2Lat($actual, $expected)
+    public function testMacedonianBGNPCGN($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\MK::BGN_PCGN)
+            self::$ts->toTranslit($actual, Lang\MK::BGN_PCGN)
         );
     }
 
@@ -95,11 +102,11 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testMacedonianISO9R1968NACyr2Lat($actual, $expected)
+    public function testMacedonianISO9R1968NA($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\MK::ISO_9_R_1968_NA)
+            self::$ts->toTranslit($actual, Lang\MK::ISO_9_R_1968_NA)
         );
     }
 
@@ -121,11 +128,11 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testMacedonianISO9R1968bCyr2Lat($actual, $expected)
+    public function testMacedonianISO9R1968b($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\MK::ISO_9_R_1968_B)
+            self::$ts->toTranslit($actual, Lang\MK::ISO_9_R_1968_B)
         );
     }
 

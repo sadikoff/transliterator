@@ -1,6 +1,6 @@
 <?php
 
-use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Transliterator;
 use \Artemiso\Transliterator\Mapping as Lang;
 
 /**
@@ -11,17 +11,24 @@ use \Artemiso\Transliterator\Mapping as Lang;
  */
 class TransliteratorBETest extends PHPUnit_Framework_TestCase
 {
+    /** @var Transliterator */
+    public static $ts;
+
+    public static function setUpBeforeClass()
+    {
+        self::$ts = new Transliterator();
+    }
 
     /**
      * @dataProvider testBelarusianProvider
      * @param $expected
      * @param $actual
      */
-    public function testBelarusianCyr2Lat($actual, $expected)
+    public function testBelarusian($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\BE::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\BE::SCHOLARLY)
         );
     }
 
@@ -43,11 +50,11 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testBelarusianALALCCyr2Lat($actual, $expected)
+    public function testBelarusianALALC($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\BE::ALA_LC)
+            self::$ts->toTranslit($actual, Lang\BE::ALA_LC)
         );
     }
 
@@ -69,11 +76,11 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testBelarusianBGNPCGNCyr2Lat($actual, $expected)
+    public function testBelarusianBGNPCGN($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\BE::BGN_PCGN)
+            self::$ts->toTranslit($actual, Lang\BE::BGN_PCGN)
         );
     }
 
@@ -95,11 +102,11 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testBelarusianISO9Cyr2Lat($actual, $expected)
+    public function testBelarusianISO9($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\BE::ISO_9)
+            self::$ts->toTranslit($actual, Lang\BE::ISO_9)
         );
     }
 
@@ -122,11 +129,11 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
      * @param $actual
      * @param $expected
      */
-    public function testBelarusianNational2000Cyr2Lat($actual, $expected)
+    public function testBelarusianNational2000($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\BE::NATIONAL_2000)
+            self::$ts->toTranslit($actual, Lang\BE::NATIONAL_2000)
         );
     }
 

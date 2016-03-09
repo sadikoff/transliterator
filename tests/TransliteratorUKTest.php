@@ -1,20 +1,28 @@
 <?php
 
-use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Transliterator;
 use \Artemiso\Transliterator\Mapping as Lang;
 
 class TransliteratorUKTest extends PHPUnit_Framework_TestCase
 {
+    /** @var Transliterator */
+    public static $ts;
+
+    public static function setUpBeforeClass()
+    {
+        self::$ts = new Transliterator();
+    }
+
     /**
      * @dataProvider testUkrainianProvider
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianCyr2Lat($actual, $expected)
+    public function testUkrainian($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\UK::SCHOLARLY)
         );
     }
 
@@ -36,11 +44,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianALALCCyr2Lat($actual, $expected)
+    public function testUkrainianALALC($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::ALA_LC)
+            self::$ts->toTranslit($actual, Lang\UK::ALA_LC)
         );
     }
 
@@ -62,11 +70,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testtestUkrainianBritishCyr2Lat($actual, $expected)
+    public function testtestUkrainianBritish($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::BRITISH)
+            self::$ts->toTranslit($actual, Lang\UK::BRITISH)
         );
     }
 
@@ -88,11 +96,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianBGNPCGNCyr2Lat($actual, $expected)
+    public function testUkrainianBGNPCGN($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::BGN_PCGN)
+            self::$ts->toTranslit($actual, Lang\UK::BGN_PCGN)
         );
     }
 
@@ -114,11 +122,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianISO9Cyr2Lat($actual, $expected)
+    public function testUkrainianISO9($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::ISO_9)
+            self::$ts->toTranslit($actual, Lang\UK::ISO_9)
         );
     }
 
@@ -140,11 +148,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianNationalCyr2Lat($actual, $expected)
+    public function testUkrainianNational($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::NATIONAL)
+            self::$ts->toTranslit($actual, Lang\UK::NATIONAL)
         );
     }
 
@@ -166,11 +174,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianGOST1971Cyr2Lat($actual, $expected)
+    public function testUkrainianGOST1971($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::GOST_1971)
+            self::$ts->toTranslit($actual, Lang\UK::GOST_1971)
         );
     }
 
@@ -192,11 +200,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianGOST1986Cyr2Lat($actual, $expected)
+    public function testUkrainianGOST1986($actual, $expected)
     {
         $this->assertEquals(
             $expected, 
-            Phrase::transliterate($actual, Lang\UK::GOST_1986)
+            self::$ts->toTranslit($actual, Lang\UK::GOST_1986)
         );
     }
 
@@ -218,11 +226,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianDerzhstandart1995Cyr2Lat($actual, $expected)
+    public function testUkrainianDerzhstandart1995($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\UK::DERZHSTANDART_1995)
+            self::$ts->toTranslit($actual, Lang\UK::DERZHSTANDART_1995)
         );
     }
 
@@ -244,11 +252,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianPassport2004Cyr2Lat($actual, $expected)
+    public function testUkrainianPassport2004($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\UK::PASSPORT_2004)
+            self::$ts->toTranslit($actual, Lang\UK::PASSPORT_2004)
         );
     }
 
@@ -270,11 +278,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianPassport2007Cyr2Lat($actual, $expected)
+    public function testUkrainianPassport2007($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\UK::PASSPORT_2007)
+            self::$ts->toTranslit($actual, Lang\UK::PASSPORT_2007)
         );
     }
 
@@ -296,11 +304,11 @@ class TransliteratorUKTest extends PHPUnit_Framework_TestCase
      * @param $expected
      * @param $actual
      */
-    public function testUkrainianPassport2010Cyr2Lat($actual, $expected)
+    public function testUkrainianPassport2010($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\UK::PASSPORT_2010)
+            self::$ts->toTranslit($actual, Lang\UK::PASSPORT_2010)
         );
     }
 

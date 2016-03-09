@@ -1,6 +1,6 @@
 <?php
 
-use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Transliterator;
 use \Artemiso\Transliterator\Mapping as Lang;
 /**
  * Created by PhpStorm.
@@ -10,16 +10,24 @@ use \Artemiso\Transliterator\Mapping as Lang;
  */
 class TransliteratorSRTest extends PHPUnit_Framework_TestCase
 {
+    /** @var Transliterator */
+    public static $ts;
+
+    public static function setUpBeforeClass()
+    {
+        self::$ts = new Transliterator();
+    }
+
     /**
      * @dataProvider testSerbianProvider
      * @param $expected
      * @param $actual
      */
-    public function testSerbianCyr2Lat($actual, $expected)
+    public function testSerbian($actual, $expected)
     {
         $this->assertEquals(
             $expected,
-            Phrase::transliterate($actual, Lang\SR::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\SR::SCHOLARLY)
         );
     }
 

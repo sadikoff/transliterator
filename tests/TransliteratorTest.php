@@ -1,6 +1,6 @@
 <?php
 
-use \Artemiso\Transliterator\Phrase;
+use \Artemiso\Transliterator\Transliterator;
 
 class TransliteratorTest extends PHPUnit_Framework_TestCase
 {
@@ -9,7 +9,8 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testWrongLanguage()
     {
-        Phrase::transliterate('uAPpX');
+        $ts = new Transliterator('ru/dle');
+        $ts->toTranslit('uAPpX');
     }
 
     /**
@@ -17,17 +18,33 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
      */
     public function testWrongLanguage2()
     {
-        Phrase::transliterate('uAPpX', 'xxx');
+        $ts = new Transliterator(
+            'ru/GOST2002', [
+                'џ' => 'u',
+                'А' => 'A',
+                'Р' => 'P',
+                'р' => 'p',
+                'Х' => 'X',
+            ]
+        );
+        $ts->toTranslit('uAPpX');
     }
 
     public function testCustomMap()
     {
-        Phrase::loadMapping('custom', [
-            'џ' => 'u', 'А' => 'A', 'Р' => 'P', 'р' => 'p', 'Х' => 'X'
-        ]);
+        $ts = new Transliterator(
+            'custom',
+            [
+                'џ' => 'u',
+                'А' => 'A',
+                'Р' => 'P',
+                'р' => 'p',
+                'Х' => 'X',
+            ]
+        );
         $this->assertEquals(
             'uAPpX',
-            Phrase::transliterate('џАРрХ', 'custom')
+            $ts->toTranslit('џАРрХ')
         );
     }
 }
