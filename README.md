@@ -10,7 +10,19 @@ Basic Usage
 
 ```php
 <?php
+use \Artemiso\Transliterator\Transliterator;
+use \Artemiso\Transliterator\Mapping as Lang;
 
+// Initialize transliteration class
+$ts = new Transliterator(Lang\RU::SCHOLARLY);
+echo $ts->toTranslit('Русский');                              // 'Russkij'
+
+// Load another mapping
+$ts->setCharMapping(Lang\SR::SCHOLARLY);
+echo $ts->toTrasnlit('Ниш');                                  // 'Niš'
+
+// Load cached mapping
+echo $ts->toTrasnlit('Транслитерация', Lang\RU::SCHOLARLY);   // 'Transliteracija'
 ```
 
 Languages and Transliteration Systems Supported
