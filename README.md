@@ -5,13 +5,28 @@ Transliterator is a PHP library for text transliteration.
 
 Transliteration is a subset of the science of hermeneutics. It is a form of translation, and is the practice of converting a text from one script into another.
 
+Instalation
+-----------
+
+This library is available on [Packagist](http://packagist.org/packages/artemiso/transliterator).
+The recommended way to install it is through [Composer](http://getcomposer.org):
+
+```bash
+$ composer require artemiso/transliterator
+```
+
+Then include Composer’s autoloader:
+
+```php
+require_once 'vendor/autoload.php';
+```
+
 Basic Usage
 -----------
 
 ```php
-<?php
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Mapping as Lang;
+use Artemiso\Transliterator\Transliterator;
+use Artemiso\Transliterator\Mapping as Lang;
 
 // Initialize transliteration class
 $ts = new Transliterator(Lang\RU::SCHOLARLY);
@@ -64,4 +79,3 @@ Languages and Transliteration Systems Supported
     * Passport 2010
 - [Greek](http://en.wikipedia.org/wiki/Romanization_of_Greek)
 - [Bulgarian](http://en.wikipedia.org/wiki/Romanization_of_Bulgarian)
-
