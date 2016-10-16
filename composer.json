@@ -3,6 +3,7 @@
     "type": "library",
     "description": "Transliterator is a PHP library for text transliteration.",
     "license": "MIT",
+    "homepage": "http://transliterator.artemi.so/",
     "authors": [
         {
             "name": "Владимир Садиков",

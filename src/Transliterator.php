@@ -48,4 +48,17 @@ class Transliterator
 
         return strtr($phrase, $this->mappings[$this->mappingKey]);
     }
+
+    /**
+     * Bridge function for Gedmo Sluggable Listener
+     *
+     * @param string $slug Text to transliterate
+     * @param string $separator currently is not used
+     * @param object $object Entity object currently is not used
+     * @return string
+     */
+    public function transliterate($slug, $separator, $object)
+    {
+        return $this->toTranslit($slug);
+    }
 }

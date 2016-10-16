@@ -24,6 +24,8 @@ require_once 'vendor/autoload.php';
 Basic Usage
 -----------
 
+### Native example
+
 ```php
 use Artemiso\Transliterator\Transliterator;
 use Artemiso\Transliterator\Mapping as Lang;
@@ -38,6 +40,43 @@ echo $ts->toTrasnlit('Ниш');                                  // 'Niš'
 
 // Load cached mapping
 echo $ts->toTrasnlit('Транслитерация', Lang\RU::SCHOLARLY);   // 'Transliteracija'
+```
+
+### Symfony 2/3 example
+
+Create transliterator service
+```xml
+<service id="artemiso.transliterator" class="Artemiso\Transliterator\Transliterator">
+    <argument type="expression">constant('Artemiso\\Transliterator\\Mapping\\RU::PASSPORT_2010')</argument>
+</service>
+```
+
+You this service where you need
+```php
+$this->get('artemiso.transliterator')->toTranslit('Русский');    // 'Russkij'
+```
+
+### Symfony 2/3 with Doctrine Extensions example
+
+Create transliterator service and connect it to Gedmo Sluggable listener
+
+```xml
+<services>
+    ...
+    <service id="artemiso.transliterator" class="Artemiso\Transliterator\Transliterator">
+        <argument type="expression">constant('Artemiso\\Transliterator\\Mapping\\RU::PASSPORT_2010')</argument>
+    </service>    
+    <service id="gedmo.listener.sluggable" class="Gedmo\Sluggable\SluggableListener">
+        <tag name="doctrine.event_subscriber"/>
+        <call method="setTransliterator">
+            <argument type="collection">
+                <argument type="service" id="artemiso.transliterator" />
+                <argument>transliterate</argument>
+            </argument>
+        </call>
+    </service>
+    ...
+</services>
 ```
 
 Languages and Transliteration Systems Supported
