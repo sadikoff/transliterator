@@ -12,7 +12,7 @@ This library is available on [Packagist](http://packagist.org/packages/artemiso/
 The recommended way to install it is through [Composer](http://getcomposer.org):
 
 ```bash
-$ composer require artemiso/transliterator
+$ composer require koff/transliterator
 ```
 
 Then include Composer’s autoloader:
@@ -28,56 +28,23 @@ Basic Usage
 
 ```php
 use Artemiso\Transliterator\Transliterator;
-use Artemiso\Transliterator\Mapping as Lang;
+use Artemiso\Transliterator\Mapping\Lang;
 
 // Initialize transliteration class
-$ts = new Transliterator(Lang\RU::SCHOLARLY);
+$ts = new Transliterator(Lang\RU\Scholarly::class);
 echo $ts->toTranslit('Русский');                              // 'Russkij'
 
 // Load another mapping
-$ts->setCharMapping(Lang\SR::SCHOLARLY);
+$ts->useMapping(Lang\SR\Scholarly::class);
 echo $ts->toTrasnlit('Ниш');                                  // 'Niš'
 
-// Load cached mapping
-echo $ts->toTrasnlit('Транслитерация', Lang\RU::SCHOLARLY);   // 'Transliteracija'
+// Temporary override mapping
+echo $ts->toTrasnlit('Транслитерация', Lang\RU\Scholarly::class);   // 'Transliteracija'
 ```
 
-### Symfony 2/3 example
+### Symfony example:
 
-Create transliterator service
-```xml
-<service id="artemiso.transliterator" class="Artemiso\Transliterator\Transliterator">
-    <argument type="expression">constant('Artemiso\\Transliterator\\Mapping\\RU::PASSPORT_2010')</argument>
-</service>
-```
-
-You this service where you need
-```php
-$this->get('artemiso.transliterator')->toTranslit('Русский');    // 'Russkij'
-```
-
-### Symfony 2/3 with Doctrine Extensions example
-
-Create transliterator service and connect it to Gedmo Sluggable listener
-
-```xml
-<services>
-    ...
-    <service id="artemiso.transliterator" class="Artemiso\Transliterator\Transliterator">
-        <argument type="expression">constant('Artemiso\\Transliterator\\Mapping\\RU::PASSPORT_2010')</argument>
-    </service>    
-    <service id="gedmo.listener.sluggable" class="Gedmo\Sluggable\SluggableListener">
-        <tag name="doctrine.event_subscriber"/>
-        <call method="setTransliterator">
-            <argument type="collection">
-                <argument type="service" id="artemiso.transliterator" />
-                <argument>transliterate</argument>
-            </argument>
-        </call>
-    </service>
-    ...
-</services>
-```
+TODO!
 
 Languages and Transliteration Systems Supported
 -----------------------------------------------

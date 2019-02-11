@@ -1,11 +1,14 @@
 <?php
 
-use \Artemiso\Transliterator\Transliterator;
+use Koff\Transliterator\Transliterator;
 
-class TransliteratorTest extends PHPUnit_Framework_TestCase
+/**
+ * @author Vladimir Sadicov <sadikoff@gmail.com>
+ */
+class TransliteratorTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException Exception
      */
     public function testWrongLanguage()
     {
@@ -13,38 +16,27 @@ class TransliteratorTest extends PHPUnit_Framework_TestCase
         $ts->toTranslit('uAPpX');
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testWrongLanguage2()
-    {
-        $ts = new Transliterator(
-            'ru/GOST2002', [
-                'џ' => 'u',
-                'А' => 'A',
-                'Р' => 'P',
-                'р' => 'p',
-                'Х' => 'X',
-            ]
-        );
-        $ts->toTranslit('uAPpX');
-    }
-
     public function testCustomMap()
     {
-        $ts = new Transliterator(
-            'custom',
-            [
-                'џ' => 'u',
-                'А' => 'A',
-                'Р' => 'P',
-                'р' => 'p',
-                'Х' => 'X',
-            ]
-        );
+        $ts = new Transliterator(CustomMapping::class);
         $this->assertEquals(
             'uAPpX',
             $ts->toTranslit('џАРрХ')
         );
     }
 }
+
+class CustomMapping implements \Koff\Transliterator\Mapping\MappingInterface
+{
+    public function getCharMapping(): array
+    {
+        return [
+            'џ' => 'u',
+            'А' => 'A',
+            'Р' => 'P',
+            'р' => 'p',
+            'Х' => 'X',
+        ];
+    }
+}
+

@@ -1,15 +1,12 @@
 <?php
 
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Mapping as Lang;
+use Koff\Transliterator\Transliterator;
+use Koff\Transliterator\Mapping\Lang;
 
 /**
- * Created by PhpStorm.
- * User: Vladimir
- * Date: 28.12.2015
- * Time: 23:48
+ * @author Vladimir Sadicov <sadikoff@gmail.com>
  */
-class TransliteratorELTest extends PHPUnit_Framework_TestCase
+class TransliteratorELTest extends \PHPUnit\Framework\TestCase
 {
     /** @var Transliterator */
     public static $ts;
@@ -20,7 +17,8 @@ class TransliteratorELTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider testGreekProvider
+     * @dataProvider greekProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -28,17 +26,17 @@ class TransliteratorELTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\EL::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\EL\Scholarly::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testGreekProvider()
+    public static function greekProvider()
     {
-        return array(
-            array('α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω', 'a b g d e z h q i k l m n c o p r s t u f x y w'),
-        );
+        return [
+            ['α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω', 'a b g d e z h q i k l m n c o p r s t u f x y w'],
+        ];
     }
 }

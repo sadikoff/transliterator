@@ -1,24 +1,24 @@
 {
-    "name": "artemiso/transliterator",
+    "name": "koff/transliterator",
     "type": "library",
     "description": "Transliterator is a PHP library for text transliteration.",
     "license": "MIT",
-    "homepage": "http://transliterator.artemi.so/",
+    "homepage": "https://koff.pro/",
     "authors": [
         {
-            "name": "Владимир Садиков",
+            "name": "Vladimir Sadicov",
             "email": "sadikoff@gmail.com"
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=7.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.4"
+        "phpunit/phpunit": "^7.5"
     },
     "autoload": {
         "psr-4": {
-            "Artemiso\\Transliterator\\": "src/"
+            "Koff\\Transliterator\\": "src/"
         }
     }
 }

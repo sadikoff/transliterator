@@ -1,15 +1,12 @@
-<?php
+x<?php
 
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Mapping as Lang;
+use Koff\Transliterator\Transliterator;
+use Koff\Transliterator\Mapping\Lang;
 
 /**
- * Created by PhpStorm.
- * User: Vladimir
- * Date: 28.12.2015
- * Time: 23:48
+ * @author Vladimir Sadicov <sadikoff@gmail.com>
  */
-class TransliteratorRUTest extends PHPUnit_Framework_TestCase
+class TransliteratorRUTest extends \PHPUnit\Framework\TestCase
 {
     /** @var Transliterator */
     public static $ts;
@@ -20,14 +17,15 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider testRussianProvider
+     * @dataProvider russianProvider
+     *
      * @param $expected
      * @param $actual
      */
     public function testRussian($actual, $expected)
     {
-        self::$ts->setCharMapping(Lang\RU::SCHOLARLY);
-        
+        self::$ts->useMapping(Lang\RU\Scholarly::class);
+
         $this->assertEquals(
             $expected,
             self::$ts->toTranslit($actual)
@@ -37,18 +35,19 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    public static function testRussianProvider()
+    public static function russianProvider()
     {
-        return array(
-            array('Ю ю', 'Ju ju'),
-            array('Я я', 'Ja ja'),
-            array('Транслитерация русского алфавита латиницей', 'Transliteracija russkogo alfavita latinicej'),
-            array('Э э', 'È è'),
-        );
+        return [
+            ['Ю ю', 'Ju ju'],
+            ['Я я', 'Ja ja'],
+            ['Транслитерация русского алфавита латиницей', 'Transliteracija russkogo alfavita latinicej'],
+            ['Э э', 'È è'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianGOST1971Provider
+     * @dataProvider russianGOST1971Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -56,29 +55,30 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::GOST_1971)
+            self::$ts->toTranslit($actual, Lang\RU\GOST_1971::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianGOST1971Provider()
+    public static function russianGOST1971Provider()
     {
-        return array(
-            array('Щ щ', 'Shh shh'),
-            array('Ы ы', "Y y"),
-            array('Э э', "Eh eh"),
-            array('Х х', "Kh kh"),
-            array('Ю ю', 'Ju ju'),
-            array('Я я', 'Ja ja'),
-            array('Й й', 'Jj jj'),
-            array('ь', "'"),
-        );
+        return [
+            ['Щ щ', 'Shh shh'],
+            ['Ы ы', "Y y"],
+            ['Э э', "Eh eh"],
+            ['Х х', "Kh kh"],
+            ['Ю ю', 'Ju ju'],
+            ['Я я', 'Ja ja'],
+            ['Й й', 'Jj jj'],
+            ['ь', "'"],
+        ];
     }
 
     /**
-     * @dataProvider testRussianISOR91968Provider
+     * @dataProvider russianISOR91968Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -86,24 +86,25 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::ISO_R_9_1968)
+            self::$ts->toTranslit($actual, Lang\RU\ISO_R_9_1968::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianISOR91968Provider()
+    public static function russianISOR91968Provider()
     {
-        return array(
-            array('Ю ю', 'Ju ju'),
-            array('Я я', 'Ja ja'),
-            array('Э э', 'Ė ė'),
-        );
+        return [
+            ['Ю ю', 'Ju ju'],
+            ['Я я', 'Ja ja'],
+            ['Э э', 'Ė ė'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianGOST1983Provider
+     * @dataProvider russianGOST1983Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -111,24 +112,25 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::GOST_1983)
+            self::$ts->toTranslit($actual, Lang\RU\GOST_1983::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianGOST1983Provider()
+    public static function russianGOST1983Provider()
     {
-        return array(
-            array('Ю ю', 'Ju ju'),
-            array('Я я', 'Ja ja'),
-            array('Э э', 'È è'),
-        );
+        return [
+            ['Ю ю', 'Ju ju'],
+            ['Я я', 'Ja ja'],
+            ['Э э', 'È è'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianGOST2000BProvider
+     * @dataProvider russianGOST2000BProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -136,28 +138,29 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::GOST_2000_B)
+            self::$ts->toTranslit($actual, Lang\RU\GOST_2000_B::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianGOST2000BProvider()
+    public static function russianGOST2000BProvider()
     {
-        return array(
-            array('Щ щ', 'Shh shh'),
-            array('Ы ы', "Y' y'"),
-            array('Э э', "E' e'"),
-            array('Х х', "Kh kh"),
-            array('Ю ю', 'Yu yu'),
-            array('Я я', 'Ya ya'),
-            array('Й й', 'J j'),
-        );
+        return [
+            ['Щ щ', 'Shh shh'],
+            ['Ы ы', "Y' y'"],
+            ['Э э', "E' e'"],
+            ['Х х', "Kh kh"],
+            ['Ю ю', 'Yu yu'],
+            ['Я я', 'Ya ya'],
+            ['Й й', 'J j'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianGOST2002Provider
+     * @dataProvider russianGOST2002Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -165,24 +168,25 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::GOST_2002)
+            self::$ts->toTranslit($actual, Lang\RU\GOST_2002::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianGOST2002Provider()
+    public static function russianGOST2002Provider()
     {
-        return array(
-            array('Ю ю', 'Û û'),
-            array('Я я', 'Â â'),
-            array('Э э', 'È è'),
-        );
+        return [
+            ['Ю ю', 'Û û'],
+            ['Я я', 'Â â'],
+            ['Э э', 'È è'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianALALCProvider
+     * @dataProvider russianALALCProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -190,24 +194,25 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::ALA_LC)
+            self::$ts->toTranslit($actual, Lang\RU\ALA_LC::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianALALCProvider()
+    public static function russianALALCProvider()
     {
-        return array(
-            array('Ю ю', 'I͡u i͡u'),
-            array('Я я', 'I͡a i͡a'),
-            array('Э э', 'Ė ė'),
-        );
+        return [
+            ['Ю ю', 'I͡u i͡u'],
+            ['Я я', 'I͡a i͡a'],
+            ['Э э', 'Ė ė'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianBritishStandardProvider
+     * @dataProvider russianBritishStandardProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -215,24 +220,25 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::BRITISH_STANDARD)
+            self::$ts->toTranslit($actual, Lang\RU\BritishStandard::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianBritishStandardProvider()
+    public static function russianBritishStandardProvider()
     {
-        return array(
-            array('Ю ю', 'Yu yu'),
-            array('Я я', 'Ya ya'),
-            array('Э э', 'É é'),
-        );
+        return [
+            ['Ю ю', 'Yu yu'],
+            ['Я я', 'Ya ya'],
+            ['Э э', 'É é'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianBGNPCGNProvider
+     * @dataProvider russianBGNPCGNProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -240,24 +246,25 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::BGN_PCGN)
+            self::$ts->toTranslit($actual, Lang\RU\BGN_PCGN::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianBGNPCGNProvider()
+    public static function russianBGNPCGNProvider()
     {
-        return array(
-            array('Ю ю', 'Yu yu'),
-            array('Я я', 'Ya ya'),
-            array('Э э', 'E e'),
-        );
+        return [
+            ['Ю ю', 'Yu yu'],
+            ['Я я', 'Ya ya'],
+            ['Э э', 'E e'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianPassport1997Provider
+     * @dataProvider russianPassport1997Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -265,24 +272,25 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::PASSPORT_1997)
+            self::$ts->toTranslit($actual, Lang\RU\Passport_1997::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianPassport1997Provider()
+    public static function russianPassport1997Provider()
     {
-        return array(
-            array('Ю ю', 'Yu yu'),
-            array('Я я', 'Ya ya'),
-            array('Э э', 'E e'),
-        );
+        return [
+            ['Ю ю', 'Yu yu'],
+            ['Я я', 'Ya ya'],
+            ['Э э', 'E e'],
+        ];
     }
 
     /**
-     * @dataProvider testRussianPassport2010Provider
+     * @dataProvider russianPassport2010Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -290,19 +298,19 @@ class TransliteratorRUTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\RU::PASSPORT_2010)
+            self::$ts->toTranslit($actual, Lang\RU\Passport_2010::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testRussianPassport2010Provider()
+    public static function russianPassport2010Provider()
     {
-        return array(
-            array('Ю ю', 'Yu yu'),
-            array('Я я', 'Ya ya'),
-            array('Э э', 'E e'),
-        );
+        return [
+            ['Ю ю', 'Yu yu'],
+            ['Я я', 'Ya ya'],
+            ['Э э', 'E e'],
+        ];
     }
 }

@@ -1,26 +1,24 @@
 <?php
 
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Mapping as Lang;
+use Koff\Transliterator\Transliterator;
+use Koff\Transliterator\Mapping\Lang;
 
 /**
- * Created by PhpStorm.
- * User: Vladimir
- * Date: 28.12.2015
- * Time: 23:48
+ * @author Vladimir Sadicov <sadikoff@gmail.com>
  */
-class TransliteratorBETest extends PHPUnit_Framework_TestCase
+class TransliteratorBETest extends \PHPUnit\Framework\TestCase
 {
     /** @var Transliterator */
     public static $ts;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$ts = new Transliterator();
     }
 
     /**
-     * @dataProvider testBelarusianProvider
+     * @dataProvider belarusianProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -28,25 +26,26 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\BE::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\BE\Scholarly::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testBelarusianProvider()
+    public static function belarusianProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'д  дж  дз  е  ё  ж  з  і  й  к  л  м  н  о  п  р  с  т  у  ў  ф  х  ц  ч  ш',
                 'd  dž  dz  e  ë  ž  z  i  j  k  l  m  n  o  p  r  s  t  u  ŭ  f  x  c  č  š',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testBelarusianALALCProvider
+     * @dataProvider belarusianALALCProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -54,25 +53,26 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\BE::ALA_LC)
+            self::$ts->toTranslit($actual, Lang\BE\ALA_LC::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testBelarusianALALCProvider()
+    public static function belarusianALALCProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'д  дж  дз  е  ё  ж  з  і  й  к  л  м  н  о  п  р  с  т  у  ў  ф  х  ц  ч  ш',
                 'd  dz͡h  dz  e  i͡o  z͡h  z  i  ĭ  k  l  m  n  o  p  r  s  t  u  ŭ  f  kh  ts  ch  sh',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testBelarusianBGNPCGNProvider
+     * @dataProvider belarusianBGNPCGNProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -80,25 +80,26 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\BE::BGN_PCGN)
+            self::$ts->toTranslit($actual, Lang\BE\BGN_PCGN::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testBelarusianBGNPCGNProvider()
+    public static function belarusianBGNPCGNProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'д  дж  дз  е  ё  ж  з  і  й  к  л  м  н  о  п  р  с  т  у  ў  ф  х  ц  ч  ш',
                 'd  dzh  dz  ye  yo  zh  z  i  y  k  l  m  n  o  p  r  s  t  u  w  f  kh  ts  ch  sh',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testBelarusianISO9Provider
+     * @dataProvider belarusianISO9Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -106,7 +107,7 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\BE::ISO_9)
+            self::$ts->toTranslit($actual, Lang\BE\ISO_9::class)
         );
     }
 
@@ -114,18 +115,19 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    public static function testBelarusianISO9Provider()
+    public static function belarusianISO9Provider()
     {
-        return array(
-            array(
+        return [
+            [
                 'д  дж  дз  е  ё  ж  з  і  й  к  л  м  н  о  п  р  с  т  у  ў  ф  х  ц  ч  ш',
                 'd  dž  dz  e  ë  ž  z  ì  j  k  l  m  n  o  p  r  s  t  u  ǔ  f  h  c  č  š',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testBelarusianNational2000Provider
+     * @dataProvider belarusianNational2000Provider
+     *
      * @param $actual
      * @param $expected
      */
@@ -133,20 +135,20 @@ class TransliteratorBETest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\BE::NATIONAL_2000)
+            self::$ts->toTranslit($actual, Lang\BE\National_2000::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testBelarusianNational2000Provider()
+    public static function belarusianNational2000Provider()
     {
-        return array(
-            array(
+        return [
+            [
                 'д  дж  дз  е  ё  ж  з  і  й  к  л  м  н  о  п  р  с  т  у  ў  ф  х  ц  ч  ш',
                 'd  dž  dz  ie  io  ž  z  i  j  k  l  m  n  o  p  r  s  t  u  ú  f  ch  c  č  š',
-            ),
-        );
+            ],
+        ];
     }
 }

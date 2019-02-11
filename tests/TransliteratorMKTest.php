@@ -1,15 +1,12 @@
 <?php
 
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Mapping as Lang;
+use Koff\Transliterator\Transliterator;
+use Koff\Transliterator\Mapping\Lang;
 
 /**
- * Created by PhpStorm.
- * User: Vladimir
- * Date: 28.12.2015
- * Time: 23:48
+ * @author Vladimir Sadicov <sadikoff@gmail.com>
  */
-class TransliteratorMKTest extends PHPUnit_Framework_TestCase
+class TransliteratorMKTest extends \PHPUnit\Framework\TestCase
 {
     /** @var Transliterator */
     public static $ts;
@@ -20,7 +17,8 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider testMacedonianProvider
+     * @dataProvider macedonianProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -28,25 +26,26 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\MK::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\MK\Scholarly::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testMacedonianProvider()
+    public static function macedonianProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'а б в г д ѓ е ж з ѕ и ј к л љ м н њ о п р с т ќ у ф х ц ч џ ш',
                 'a b v g d gj e zh z dz i j k l lj m n nj o p r s t kj u f h c ch dj sh',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testMacedonianISO91995Provider
+     * @dataProvider macedonianISO91995Provider
+     *
      * @param $expected
      * @param $actual
      */
@@ -54,25 +53,26 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\MK::ISO_9_1995)
+            self::$ts->toTranslit($actual, Lang\MK\ISO_9_1995::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testMacedonianISO91995Provider()
+    public static function macedonianISO91995Provider()
     {
-        return array(
-            array(
+        return [
+            [
                 'а б в г д ѓ е ж з ѕ и ј к л љ м н њ о п р с т ќ у ф х ц ч џ ш',
                 'a b v g d ǵ e ž z ẑ i ǰ k l l̂ m n n̂ o p r s t ḱ u f h c č d̂ š',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testMacedonianBGNPCGNProvider
+     * @dataProvider macedonianBGNPCGNProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -80,25 +80,26 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\MK::BGN_PCGN)
+            self::$ts->toTranslit($actual, Lang\MK\BGN_PCGN::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testMacedonianBGNPCGNProvider()
+    public static function macedonianBGNPCGNProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'а б в г д ѓ е ж з ѕ и ј к л љ м н њ о п р с т ќ у ф х ц ч џ ш',
                 'a b v g d đ e ž z dz i j k l lj m n nj o p r s t ć u f h c č dž š',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testMacedonianISO9R1968NAProvider
+     * @dataProvider macedonianISO9R1968NAProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -106,25 +107,26 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\MK::ISO_9_R_1968_NA)
+            self::$ts->toTranslit($actual, Lang\MK\ISO_9_R_1968_NA::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testMacedonianISO9R1968NAProvider()
+    public static function macedonianISO9R1968NAProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'а б в г д ѓ е ж з ѕ и ј к л љ м н њ о п р с т ќ у ф х ц ч џ ш',
                 'a b v g d ǵ e ž z dz i j k l lj m n nj o p r s t ḱ u f h c č dž š',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
-     * @dataProvider testMacedonianISO9R1968bProvider
+     * @dataProvider macedonianISO9R1968bProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -132,20 +134,20 @@ class TransliteratorMKTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\MK::ISO_9_R_1968_B)
+            self::$ts->toTranslit($actual, Lang\MK\ISO_9_R_1968_B::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testMacedonianISO9R1968bProvider()
+    public static function macedonianISO9R1968bProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'а б в г д ѓ е ж з ѕ и ј к л љ м н њ о п р с т ќ у ф х ц ч џ ш',
                 'a b v g d ǵ e zh z dz i j k l lj m n nj o p r s t ḱ u f kh ts ch dž sh',
-            ),
-        );
+            ],
+        ];
     }
 }

@@ -1,60 +1,42 @@
 <?php
 
-namespace Artemiso\Transliterator;
+namespace Koff\Transliterator;
 
+use Koff\Transliterator\Mapping\MappingLoader;
 
-class Transliterator
+/**
+ * @author Vladimir Sadicov <sadikoff@gmail.com>
+ */
+final class Transliterator
 {
-    const PATH = 'Resources/mapping';
+    private $mappingLoader;
+    private $mappingClassname;
 
-    private $mappings = [];
-    private $mappingKey = null;
-
-    public function __construct($mappingKey = null, $mappingData = null)
+    public function __construct(string $mappingClassname = null)
     {
-        if (null !== $mappingKey) {
-            $this->setCharMapping($mappingKey, $mappingData);
-        }
+        $this->mappingLoader = new MappingLoader();
+        $this->mappingClassname  = $mappingClassname;
     }
 
-    public function setCharMapping($mappingKey, $mappingData = null)
+    public function useMapping(string $mappingClassname): void
     {
-        if (!array_key_exists($mappingKey, $this->mappings)) {
-            $mappingIniFile = dirname(__FILE__).'/'.Transliterator::PATH.'/'.$mappingKey.'.ini';
-
-            if (null === $mappingData) {
-                if (!file_exists($mappingIniFile)) {
-                    throw new \InvalidArgumentException(sprintf('No mapping info found by key %s', $mappingKey));
-                }
-
-                $this->mappings[$mappingKey] = parse_ini_file($mappingIniFile);
-            } else {
-                if (file_exists($mappingIniFile)) {
-                    throw new \InvalidArgumentException(sprintf('You cannot use key %s. Mapping info found', $mappingKey));
-                }
-
-                $this->mappings[$mappingKey] = $mappingData;
-            }
-        }
-
-        $this->mappingKey = $mappingKey;
+        $this->mappingClassname = $mappingClassname;
     }
 
-    public function toTranslit($phrase, $mappingKey = null)
+    public function toTranslit(string $phrase, string $overrideMapping = null): string
     {
-        if (null !== $mappingKey) {
-            $this->setCharMapping($mappingKey);
-        }
+        $charMap = $this->mappingLoader->load($overrideMapping ?: $this->mappingClassname);
 
-        return strtr($phrase, $this->mappings[$this->mappingKey]);
+        return strtr($phrase, $charMap->getCharMapping());
     }
 
     /**
      * Bridge function for Gedmo Sluggable Listener
      *
-     * @param string $slug Text to transliterate
+     * @param string $slug      Text to transliterate
      * @param string $separator currently is not used
-     * @param object $object Entity object currently is not used
+     * @param object $object    Entity object currently is not used
+     *
      * @return string
      */
     public function transliterate($slug, $separator, $object)

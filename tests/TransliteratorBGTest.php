@@ -1,15 +1,12 @@
 <?php
 
-use \Artemiso\Transliterator\Transliterator;
-use \Artemiso\Transliterator\Mapping as Lang;
+use Koff\Transliterator\Transliterator;
+use Koff\Transliterator\Mapping\Lang;
 
 /**
- * Created by PhpStorm.
- * User: Vladimir
- * Date: 28.12.2015
- * Time: 23:48
+ * @author Vladimir Sadicov <sadikoff@gmail.com>
  */
-class TransliteratorBGTest extends PHPUnit_Framework_TestCase
+class TransliteratorBGTest extends \PHPUnit\Framework\TestCase
 {
     /** @var Transliterator */
     public static $ts;
@@ -20,7 +17,8 @@ class TransliteratorBGTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider testBulgarianProvider
+     * @dataProvider bulgarianProvider
+     *
      * @param $expected
      * @param $actual
      */
@@ -28,20 +26,20 @@ class TransliteratorBGTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expected,
-            self::$ts->toTranslit($actual, Lang\BG::SCHOLARLY)
+            self::$ts->toTranslit($actual, Lang\BG\Scholarly::class)
         );
     }
 
     /**
      * @return array
      */
-    public static function testBulgarianProvider()
+    public static function bulgarianProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'а б в г д е з и к л м н о п р с т ф ж ч ш щ ц х й ю я ь у ъ ѣ ѫ',
                 'a b v g d e z i k l m n o p r s t f ž č š ŝ c h j û â ′ u ″ ě ǎ',
-            ),
-        );
+            ],
+        ];
     }
 }
