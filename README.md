@@ -1,4 +1,4 @@
-Transliterator [![Build Status](https://travis-ci.org/sadikoff/Transliterator.svg)](http://travis-ci.org/sadikoff/Transliterator)
+Transliterator [![Build Status](https://travis-ci.org/sadikoff/transliterator.svg)](http://travis-ci.org/sadikoff/transliterator)
 ==============
 
 Transliterator is a PHP library for text transliteration.
