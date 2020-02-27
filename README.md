@@ -27,8 +27,8 @@ Basic Usage
 ### Native example
 
 ```php
-use Artemiso\Transliterator\Transliterator;
-use Artemiso\Transliterator\Mapping\Lang;
+use Koff\Transliterator\Transliterator;
+use Koff\Transliterator\Mapping\Lang;
 
 // Initialize transliteration class
 $ts = new Transliterator(Lang\RU\Scholarly::class);
